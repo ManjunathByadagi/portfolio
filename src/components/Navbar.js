@@ -1,3 +1,4 @@
+// Navbar component handles navigation links and scroll behavior
 import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
