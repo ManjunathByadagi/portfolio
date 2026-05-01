@@ -125,8 +125,8 @@ export default function Hero() {
         </div>
 
         <p style={{ color:'var(--sub)', fontSize:'0.9rem', maxWidth:560, margin:'0 auto 3rem', lineHeight:1.7, animation:'fadeUp .7s .4s var(--ease) both' }}>
-          Building scalable AI systems and end-to-end ML pipelines for real-world impact.
-          Focused on multi-agent AI and applications in healthcare and finance.
+          Building scalable AI systems and intelligent pipelines for real-world impact.
+          Specialized in multi-agent AI and production-ready ML solutions.
         </p>
 
         {/* CTAs */}
