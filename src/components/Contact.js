@@ -3,8 +3,8 @@ import { useInView } from '../hooks';
 
 const LINKS = [
   { label: 'Email', icon: '📧', href: 'mailto:manjunathbyadagi11@gmail.com', color: '#ff6b82', sub: 'manjunathbyadagi11@gmail.com' },
-  { label: 'LinkedIn', icon: '💼', href: 'https://www.linkedin.com/in/manjunath-k-byadagi/', color: '#00e8ff', sub: 'linkedin.com/in/manjunath-k-byadagi' },
-  { label: 'GitHub', icon: '🐙', href: 'https://github.com/ManjunathByadagi', color: '#8b7fff', sub: 'github.com/ManjunathByadagi' },
+  { label: 'LinkedIn', icon: '💼', href: 'https://www.linkedin.com/in/manjunath-k-byadagi/', color: '#00F5FF', sub: 'linkedin.com/in/manjunath-k-byadagi' },
+  { label: 'GitHub', icon: '🐙', href: 'https://github.com/ManjunathByadagi', color: '#7C3AED', sub: 'github.com/ManjunathByadagi' },
 ];
 
 export default function Contact() {
@@ -19,7 +19,7 @@ export default function Contact() {
 
   return (
     <section id="contact" style={{ padding: '7rem 2rem 5rem', maxWidth: 820, margin: '0 auto', textAlign: 'center' }} ref={ref}>
-      <div style={{ height: 1, background: 'linear-gradient(90deg,transparent,rgba(139,127,255,0.4),transparent)', marginBottom: '6rem' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg,transparent,rgba(124,58,237,0.4),transparent)', marginBottom: '6rem' }} />
 
       <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateY(24px)', transition: 'all .8s var(--ease)' }}>
         <div style={{ fontSize: '0.68rem', color: 'var(--v)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'var(--font-m)' }}>◉ Get In Touch</div>
@@ -27,7 +27,7 @@ export default function Contact() {
         <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(2.2rem,6vw,4rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '1.2rem' }}>
           Let's build something
           <br />
-          <span style={{ background: 'linear-gradient(135deg,#8b7fff,#00e8ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>remarkable.</span>
+          <span style={{ background: 'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>remarkable.</span>
         </h2>
 
         <p style={{ color: 'var(--sub)', fontSize: '0.87rem', fontFamily: 'var(--font-m)', maxWidth: 460, margin: '0 auto 3rem', lineHeight: 1.75 }}>
@@ -42,10 +42,10 @@ export default function Contact() {
               color: '#fff', padding: '1rem 2.5rem', borderRadius: 10,
               textDecoration: 'none', fontSize: '0.82rem',
               fontFamily: 'var(--font-m)', letterSpacing: '0.08em', textTransform: 'uppercase',
-              boxShadow: '0 0 40px rgba(139,127,255,0.35)', transition: 'all .25s var(--ease)',
+              boxShadow: '0 0 40px rgba(124,58,237,0.35)', transition: 'all .25s var(--ease)',
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(139,127,255,0.55)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 0 40px rgba(139,127,255,0.35)'; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(124,58,237,0.55)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 0 40px rgba(124,58,237,0.35)'; }}
           >
             Send Email →
           </a>
@@ -53,13 +53,13 @@ export default function Contact() {
           <button
             onClick={copyEmail}
             style={{
-              background: copied ? 'rgba(61,255,160,0.1)' : 'rgba(255,255,255,0.04)',
+              background: copied ? 'rgba(34,255,136,0.1)' : 'rgba(255,255,255,0.04)',
               color: copied ? 'var(--g)' : 'var(--sub)',
-              border: `1px solid ${copied ? 'rgba(61,255,160,0.35)' : 'rgba(255,255,255,0.1)'}`,
+              border: `1px solid ${copied ? 'rgba(34,255,136,0.35)' : 'rgba(255,255,255,0.1)'}`,
               padding: '1rem 2rem', borderRadius: 10, cursor: 'pointer',
               fontSize: '0.82rem', fontFamily: 'var(--font-m)',
               letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all .25s',
-              boxShadow: copied ? '0 0 20px rgba(61,255,160,0.2)' : 'none',
+              boxShadow: copied ? '0 0 20px rgba(34,255,136,0.2)' : 'none',
             }}
           >
             {copied ? '✓ Copied!' : '⧉ Copy Email'}

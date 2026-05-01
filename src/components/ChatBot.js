@@ -60,8 +60,8 @@ function ContactCard() {
   const [copied, setCopied] = useState(false);
   const links = [
     { icon:'📧', label:'Email', value:'manjunathbyadagi11@gmail.com', href:'mailto:manjunathbyadagi11@gmail.com', color:'#ff6b82', copy:true },
-    { icon:'💼', label:'LinkedIn', value:'linkedin.com/in/manjunath-k-byadagi', href:'https://www.linkedin.com/in/manjunath-k-byadagi/', color:'#00e8ff' },
-    { icon:'🐙', label:'GitHub', value:'github.com/ManjunathByadagi', href:'https://github.com/ManjunathByadagi', color:'#8b7fff' },
+    { icon:'💼', label:'LinkedIn', value:'linkedin.com/in/manjunath-k-byadagi', href:'https://www.linkedin.com/in/manjunath-k-byadagi/', color:'#00F5FF' },
+    { icon:'🐙', label:'GitHub', value:'github.com/ManjunathByadagi', href:'https://github.com/ManjunathByadagi', color:'#7C3AED' },
   ];
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:'0.55rem', marginTop:'0.3rem' }}>
@@ -147,7 +147,7 @@ function Bubble({ msg, isNew }) {
   return (
     <div style={{ display:'flex', justifyContent:isUser?'flex-end':'flex-start', gap:'0.6rem', alignItems:'flex-end', animation:'fadeUp .3s var(--ease) both' }}>
       {!isUser && (
-        <div style={{ width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem', flexShrink:0, boxShadow:'0 0 12px rgba(139,127,255,0.4)' }}>🤖</div>
+        <div style={{ width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem', flexShrink:0, boxShadow:'0 0 12px rgba(124,58,237,0.4)' }}>🤖</div>
       )}
       <div style={{
         maxWidth:'76%', padding:'0.75rem 1rem',
@@ -245,7 +245,7 @@ export default function ChatBot() {
       {/* Header */}
       <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3rem' }}>
         <div style={{ fontSize:'0.68rem', color:'var(--v)', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Interactive</div>
-        <div style={{ flex:1, height:1, background:'linear-gradient(90deg,rgba(139,127,255,0.4),transparent)' }} />
+        <div style={{ flex:1, height:1, background:'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)' }} />
         <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.6rem,3vw,2.2rem)', fontWeight:800, letterSpacing:'-0.03em', whiteSpace:'nowrap' }}>
           Chat with <span style={{ color:'var(--v)' }}>Manju Bot</span>
         </h2>
@@ -255,21 +255,21 @@ export default function ChatBot() {
       <div style={{
         borderRadius:20, overflow:'hidden',
         border:'1px solid rgba(255,255,255,0.07)',
-        background:'rgba(11,11,24,0.8)',
+        background:'rgba(7,16,26,0.8)',
         backdropFilter:'blur(20px)',
-        boxShadow:'0 0 80px rgba(139,127,255,0.1), 0 40px 80px rgba(0,0,0,0.5)'
+        boxShadow:'0 0 80px rgba(124,58,237,0.1), 0 40px 80px rgba(0,0,0,0.5)'
       }}>
         {/* Chat header bar */}
         <div style={{
           padding:'0.9rem 1.4rem',
-          background:'rgba(139,127,255,0.06)',
+          background:'rgba(124,58,237,0.06)',
           borderBottom:'1px solid rgba(255,255,255,0.06)',
           display:'flex', alignItems:'center', justifyContent:'space-between'
         }}>
           <div style={{ display:'flex', alignItems:'center', gap:'0.75rem' }}>
             <div style={{ position:'relative' }}>
-              <div style={{ width:36, height:36, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1rem', boxShadow:'0 0 16px rgba(139,127,255,0.5)' }}>🤖</div>
-              <div style={{ position:'absolute', bottom:1, right:1, width:8, height:8, borderRadius:'50%', background:'var(--g)', border:'2px solid #0b0b18', boxShadow:'0 0 6px var(--g)' }} />
+              <div style={{ width:36, height:36, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1rem', boxShadow:'0 0 16px rgba(124,58,237,0.5)' }}>🤖</div>
+              <div style={{ position:'absolute', bottom:1, right:1, width:8, height:8, borderRadius:'50%', background:'var(--g)', border:'2px solid #07101a', boxShadow:'0 0 6px var(--g)' }} />
             </div>
             <div>
               <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.9rem' }}>Manju Bot</div>
@@ -280,11 +280,11 @@ export default function ChatBot() {
           <button onClick={() => setAiMode(!aiMode)} style={{
             display:'flex', alignItems:'center', gap:'0.5rem',
             padding:'0.35rem 0.9rem', borderRadius:20, cursor:'pointer',
-            background: aiMode ? 'rgba(139,127,255,0.2)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${aiMode ? 'rgba(139,127,255,0.5)' : 'rgba(255,255,255,0.1)'}`,
+            background: aiMode ? 'rgba(124,58,237,0.2)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${aiMode ? 'rgba(124,58,237,0.5)' : 'rgba(255,255,255,0.1)'}`,
             color: aiMode ? 'var(--v)' : 'var(--dim)',
             fontSize:'0.68rem', fontFamily:'var(--font-m)', letterSpacing:'0.06em',
-            transition:'all .25s', boxShadow: aiMode ? '0 0 16px rgba(139,127,255,0.25)' : 'none'
+            transition:'all .25s', boxShadow: aiMode ? '0 0 16px rgba(124,58,237,0.25)' : 'none'
           }}>
             <div style={{ width:6, height:6, borderRadius:'50%', background: aiMode ? 'var(--v)' : 'var(--dim)', boxShadow: aiMode ? '0 0 8px var(--v)' : 'none', transition:'all .25s' }} />
             AI Mode {aiMode ? 'ON' : 'OFF'}
@@ -339,7 +339,7 @@ export default function ChatBot() {
               color:'var(--text)', fontFamily:'var(--font-m)',
               fontSize:'0.84rem', outline:'none', transition:'border-color .2s',
             }}
-            onFocus={e => e.target.style.borderColor='rgba(139,127,255,0.45)'}
+            onFocus={e => e.target.style.borderColor='rgba(124,58,237,0.45)'}
             onBlur={e => e.target.style.borderColor='rgba(255,255,255,0.09)'}
           />
           <button onClick={() => send(input)} disabled={!input.trim() || typing}
@@ -349,7 +349,7 @@ export default function ChatBot() {
               border:'none', borderRadius:10, padding:'0.75rem 1.2rem',
               cursor: input.trim() && !typing ? 'pointer' : 'not-allowed',
               fontSize:'1.1rem', transition:'all .2s',
-              boxShadow: input.trim() && !typing ? '0 0 20px rgba(139,127,255,0.4)' : 'none',
+              boxShadow: input.trim() && !typing ? '0 0 20px rgba(124,58,237,0.4)' : 'none',
             }}>→</button>
         </div>
       </div>

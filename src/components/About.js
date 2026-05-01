@@ -2,9 +2,9 @@ import React from 'react';
 import { useInView } from '../hooks';
 
 const BARS = [
-  { label:'Deep Learning',      pct:92, color:'#8b7fff' },
-  { label:'Python / PyTorch',   pct:94, color:'#00e8ff' },
-  { label:'Data Engineering',   pct:82, color:'#3dffa0' },
+  { label:'Deep Learning',      pct:92, color:'#7C3AED' },
+  { label:'Python / PyTorch',   pct:94, color:'#00F5FF' },
+  { label:'Data Engineering',   pct:82, color:'#22FF88' },
   { label:'MLOps / Cloud',      pct:76, color:'#ffd166' },
   { label:'NLP & Transformers', pct:80, color:'#ff6b82' },
 ];
@@ -17,14 +17,14 @@ export default function About() {
       {/* Section label */}
       <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3.5rem' }}>
         <div style={{ fontSize:'0.68rem', color:'var(--v)', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ About Me</div>
-        <div style={{ flex:1, height:1, background:'linear-gradient(90deg, rgba(139,127,255,0.4), transparent)', transformOrigin:'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition:'transform 1s var(--ease)' }} />
+        <div style={{ flex:1, height:1, background:'linear-gradient(90deg, rgba(124,58,237,0.4), transparent)', transformOrigin:'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition:'transform 1s var(--ease)' }} />
       </div>
 
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem', alignItems:'center' }}>
         {/* Left */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateX(-24px)', transition:'all .8s var(--ease)' }}>
           <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(2rem,4vw,3rem)', fontWeight:800, lineHeight:1.05, letterSpacing:'-0.04em', marginBottom:'1.5rem' }}>
-            Transforming data<br /><span style={{ background:'linear-gradient(135deg,#8b7fff,#00e8ff)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>into intelligent systems with real-world impact.</span>
+            Transforming data<br /><span style={{ background:'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>into intelligent systems with real-world impact.</span>
           </h2>
           <p style={{ color:'var(--sub)', lineHeight:1.85, fontSize:'0.87rem', marginBottom:'1.5rem' }}>
             I'm a Computer Science student specializing in Machine Learning and AI Systems. I build intelligent, production-ready solutions - from multi-agent AI systems and phishing detection models to customer segmentation and blockchain-based applications.
@@ -36,7 +36,7 @@ export default function About() {
             {['Research','Production ML','Real-World Impact'].map(tag => (
               <span key={tag} style={{
                 fontSize:'0.7rem', fontFamily:'var(--font-m)', color:'var(--v)',
-                border:'1px solid rgba(139,127,255,0.25)', background:'rgba(139,127,255,0.08)',
+                border:'1px solid rgba(124,58,237,0.25)', background:'rgba(124,58,237,0.08)',
                 padding:'0.35rem 0.75rem', borderRadius:6
               }}>{tag}</span>
             ))}

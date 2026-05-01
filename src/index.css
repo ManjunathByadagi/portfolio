@@ -1,19 +1,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #06060f;
-  --bg2:     #0b0b18;
-  --bg3:     #0f0f22;
+  --bg:      #05070A;
+  --bg2:     #07101a;
+  --bg3:     #0b1420;
   --glass:   rgba(255,255,255,0.032);
   --glassh:  rgba(255,255,255,0.06);
   --border:  rgba(255,255,255,0.07);
   --borderh: rgba(255,255,255,0.14);
-  --v:       #8b7fff;   /* violet */
-  --c:       #00e8ff;   /* cyan   */
-  --g:       #3dffa0;   /* green  */
+  --v:       #7C3AED;   /* violet */
+  --c:       #00F5FF;   /* cyan   */
+  --g:       #22FF88;   /* green  */
   --r:       #ff6b82;   /* rose   */
   --y:       #ffd166;   /* amber  */
-  --text:    #eeeef8;
+  --text:    #E6F1FF;
   --sub:     #8888a8;
   --dim:     #44445a;
   --font-h:  'Syne', sans-serif;
@@ -23,6 +23,20 @@
 
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--font-m); line-height: 1.6; overflow-x: hidden; }
+
+.liquid-magnetic {
+  --mag-x: 0px;
+  --mag-y: 0px;
+  --mag-scale: 1;
+  transform: translate3d(var(--mag-x), var(--mag-y), 0) scale(var(--mag-scale));
+  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease), color 260ms var(--ease);
+  will-change: transform;
+}
+
+.liquid-magnetic:hover {
+  --mag-scale: 1.035;
+  box-shadow: 0 0 36px rgba(0,245,255,0.22), 0 0 56px rgba(124,58,237,0.18) !important;
+}
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

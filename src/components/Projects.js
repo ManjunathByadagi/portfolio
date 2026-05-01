@@ -8,7 +8,7 @@ const PROJECTS = [
     solution: 'Built a multi-agent AI system using LangGraph with Planner, Researcher, Writer, and Critic agents. Designed an orchestration pipeline enabling step-by-step reasoning and iterative output improvement.',
     stack: ['LangGraph', 'LLMs', 'Python', 'Prompt Engineering', 'Multi-Agent Systems'],
     result: 'Improved response quality through agent collaboration · Modular and scalable AI architecture · Demonstrates real-world AI system design',
-    accent: '#ff6b82', github: 'https://github.com/manjunath-shanmugari'
+    accent: '#7C3AED', github: 'https://github.com/manjunath-shanmugari'
   },
   {
     emoji: '🛡️', tag: 'Cybersecurity AI', title: 'PhishGuard AI',
@@ -16,7 +16,7 @@ const PROJECTS = [
     solution: 'Built an AI-powered phishing detection system using NLP and machine learning models. Applied TF-IDF vectorization and trained classification models to detect malicious patterns in emails. Deployed a FastAPI-based backend for real-time prediction with low-latency responses.',
     stack: ['Python', 'Scikit-learn', 'TF-IDF', 'FastAPI', 'NLP', 'Docker'],
     result: 'High accuracy in phishing detection · Real-time classification API · Improved detection of unseen attack patterns',
-    accent: '#8b7fff', github: 'https://github.com/manjunath-shanmugari'
+    accent: '#7C3AED', github: 'https://github.com/manjunath-shanmugari'
   },
   {
     emoji: '📊', tag: 'Data Science', title: 'Customer Segmentation (Telco Retention)',
@@ -24,7 +24,7 @@ const PROJECTS = [
     solution: 'Built a customer segmentation system using K-Means clustering on the Telco Customer Churn dataset. Applied PCA for dimensionality reduction and visualization of clusters. Analyzed customer behavior and churn distribution across segments to identify high-risk groups.',
     stack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'K-Means', 'PCA', 'Matplotlib'],
     result: 'Identified distinct customer segments with clear churn patterns · Enabled data-driven retention strategies · Improved interpretability using PCA visualization',
-    accent: '#3dffa0', github: 'https://github.com/manjunath-shanmugari'
+    accent: '#22FF88', github: 'https://github.com/manjunath-shanmugari'
   },
   {
     emoji: '🗳️', tag: 'Blockchain', title: 'Voting System',
@@ -32,12 +32,17 @@ const PROJECTS = [
     solution: 'Built a secure blockchain-based voting system using smart contracts. Implemented voter authentication, encrypted ballots, and zero-knowledge proof-based nullifiers to ensure anonymity and prevent double voting. Designed a decentralized tallying mechanism with consensus to ensure tamper-proof and verifiable results.',
     stack: ['Solidity', 'Blockchain', 'Smart Contracts', 'Zero-Knowledge Proofs', 'Ethereum', 'Hardhat'],
     result: 'Transparent and tamper-proof voting process · Secure voter authentication · Privacy-preserving anonymous voting · Decentralized and verifiable results',
-    accent: '#00e8ff', github: 'https://github.com/manjunath-shanmugari'
+    accent: '#00F5FF', github: 'https://github.com/manjunath-shanmugari'
   },
 ];
 
+function clampTilt(value) {
+  return Math.max(-5, Math.min(5, value));
+}
+
 function PCard({ p, delay, inView }) {
   const [hov, setHov] = useState(false);
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
 
   const activateNetwork = (event, active) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -53,26 +58,41 @@ function PCard({ p, delay, inView }) {
     }));
   };
 
+  const moveCard = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+
+    setTilt({
+      rx: clampTilt(-py * 5),
+      ry: clampTilt(px * 5),
+    });
+    activateNetwork(event, true);
+  };
+
   return (
     <div
       onMouseEnter={(event) => { setHov(true); activateNetwork(event, true); }}
-      onMouseMove={(event) => activateNetwork(event, true)}
-      onMouseLeave={(event) => { setHov(false); activateNetwork(event, false); }}
+      onMouseMove={moveCard}
+      onMouseLeave={(event) => { setHov(false); setTilt({ rx: 0, ry: 0 }); activateNetwork(event, false); }}
       style={{
         position: 'relative', borderRadius: 18,
         padding: '2px',
         background: hov ? `linear-gradient(135deg, ${p.accent}60, ${p.accent}18, transparent)` : 'linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02))',
-        transition: 'background .4s',
-        transform: inView ? 'none' : 'translateY(30px)',
+        transition: 'background .4s, transform .24s var(--ease), box-shadow .28s var(--ease)',
+        transform: inView ? `perspective(900px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateY(${hov ? '-4px' : '0'})` : 'translateY(30px)',
+        transformStyle: 'preserve-3d',
         opacity: inView ? 1 : 0,
         animation: inView ? `cardIn .6s ${delay}s var(--ease) both` : 'none',
-        boxShadow: hov ? `0 0 60px ${p.accent}22, 0 20px 60px rgba(0,0,0,0.4)` : '0 4px 30px rgba(0,0,0,0.3)',
+        boxShadow: hov ? `0 0 70px ${p.accent}30, 0 26px 70px rgba(0,0,0,0.48)` : '0 4px 30px rgba(0,0,0,0.3)',
       }}
     >
       <div style={{
-        borderRadius: 16, background: 'rgba(11,11,24,0.95)',
+        borderRadius: 16, background: 'rgba(5,7,10,0.9)',
         padding: '1.8rem', height: '100%',
-        backdropFilter: 'blur(10px)',
+        backdropFilter: 'blur(14px)',
+        transform: hov ? 'translateZ(14px)' : 'translateZ(0)',
+        transition: 'transform .28s var(--ease)',
       }}>
         <div style={{ height: 2, borderRadius: 2, background: `linear-gradient(90deg, ${p.accent}, transparent)`, marginBottom: '1.5rem', opacity: hov ? 1 : 0.5, transition: 'opacity .3s' }} />
 
@@ -85,6 +105,8 @@ function PCard({ p, delay, inView }) {
             href={p.github}
             target="_blank"
             rel="noreferrer"
+            className="liquid-magnetic"
+            data-liquid-magnetic
             style={{ fontSize: '0.7rem', fontFamily: 'var(--font-m)', color: 'var(--dim)', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.08)', padding: '0.28rem 0.65rem', borderRadius: 6, transition: 'all .2s', flexShrink: 0 }}
             onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
             onMouseLeave={e => { e.currentTarget.style.color = 'var(--dim)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; }}
@@ -129,7 +151,7 @@ export default function Projects() {
     <section id="projects" style={{ padding: '7rem 2rem', maxWidth: 1120, margin: '0 auto' }} ref={ref}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
         <div style={{ fontSize: '0.68rem', color: 'var(--v)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'var(--font-m)', whiteSpace: 'nowrap' }}>◉ Featured Work</div>
-        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,rgba(139,127,255,0.4),transparent)', transformOrigin: 'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 1s var(--ease)' }} />
+        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)', transformOrigin: 'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 1s var(--ease)' }} />
         <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800, letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>
           Projects that <span style={{ color: 'var(--v)' }}>matter</span>
         </h2>

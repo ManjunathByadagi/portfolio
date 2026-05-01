@@ -1,21 +1,21 @@
 export const QUICK_ACTIONS = [
-  { id: 'projects', label: '🔬 Show Projects', color: '#8b7fff' },
-  { id: 'skills', label: '⚡ My Skills', color: '#00e8ff' },
-  { id: 'contact', label: '📬 Contact Info', color: '#3dffa0' },
+  { id: 'projects', label: '🔬 Show Projects', color: '#7C3AED' },
+  { id: 'skills', label: '⚡ My Skills', color: '#00F5FF' },
+  { id: 'contact', label: '📬 Contact Info', color: '#22FF88' },
   { id: 'resume', label: '📄 Resume', color: '#ffd166' },
 ];
 
 export const PROJECTS_DATA = [
   { emoji: '🤖', name: 'MultiAgent AI System', tag: 'AI Systems', color: '#ff6b82', result: 'Improved response quality · Modular and scalable AI architecture', stack: ['LangGraph', 'LLMs', 'Python', 'Prompt Engineering'] },
-  { emoji: '🛡️', name: 'PhishGuard AI', tag: 'Cybersecurity AI', color: '#8b7fff', result: 'High accuracy in phishing detection · Real-time classification API', stack: ['Python', 'Scikit-learn', 'TF-IDF', 'FastAPI'] },
-  { emoji: '📊', name: 'Customer Segmentation (Telco Retention)', tag: 'Data Science', color: '#3dffa0', result: 'Distinct churn segments · Data-driven retention strategies', stack: ['Python', 'Scikit-learn', 'Pandas', 'PCA'] },
-  { emoji: '🗳️', name: 'Voting System', tag: 'Blockchain', color: '#00e8ff', result: 'Transparent and tamper-proof voting · Anonymous and verifiable results', stack: ['Solidity', 'Blockchain', 'Ethereum', 'Hardhat'] },
+  { emoji: '🛡️', name: 'PhishGuard AI', tag: 'Cybersecurity AI', color: '#7C3AED', result: 'High accuracy in phishing detection · Real-time classification API', stack: ['Python', 'Scikit-learn', 'TF-IDF', 'FastAPI'] },
+  { emoji: '📊', name: 'Customer Segmentation (Telco Retention)', tag: 'Data Science', color: '#22FF88', result: 'Distinct churn segments · Data-driven retention strategies', stack: ['Python', 'Scikit-learn', 'Pandas', 'PCA'] },
+  { emoji: '🗳️', name: 'Voting System', tag: 'Blockchain', color: '#00F5FF', result: 'Transparent and tamper-proof voting · Anonymous and verifiable results', stack: ['Solidity', 'Blockchain', 'Ethereum', 'Hardhat'] },
 ];
 
 export const SKILLS_DATA = {
-  'ML / AI': { color: '#8b7fff', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'HuggingFace', 'OpenCV', 'XGBoost', 'Keras'] },
-  'Languages': { color: '#00e8ff', items: ['Python', 'SQL', 'JavaScript', 'C++', 'R'] },
-  'Data Science': { color: '#3dffa0', items: ['Pandas', 'NumPy', 'Matplotlib', 'Plotly', 'Spark', 'Jupyter'] },
+  'ML / AI': { color: '#7C3AED', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'HuggingFace', 'OpenCV', 'XGBoost', 'Keras'] },
+  'Languages': { color: '#00F5FF', items: ['Python', 'SQL', 'JavaScript', 'C++', 'R'] },
+  'Data Science': { color: '#22FF88', items: ['Pandas', 'NumPy', 'Matplotlib', 'Plotly', 'Spark', 'Jupyter'] },
   'MLOps & Cloud': { color: '#ff6b82', items: ['AWS', 'Docker', 'MLflow', 'GCP', 'Airflow', 'CI/CD'] },
   'Web & APIs': { color: '#ffd166', items: ['React', 'FastAPI', 'Flask', 'Streamlit', 'PostgreSQL', 'Redis'] },
 };
