@@ -121,7 +121,7 @@ function TypedMessage({ text, onDone }) {
 function FormattedText({ text, showCursor }) {
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return (
-    <p style={{ margin:0, lineHeight:1.65, fontSize:'0.84rem', fontFamily:'var(--font-m)' }}>
+    <p style={{ margin:0, lineHeight:1.65, fontSize:'0.84rem', fontFamily:'var(--font-m)', whiteSpace:'pre-wrap' }}>
       {parts.map((p, i) => p.startsWith('**') && p.endsWith('**')
         ? <strong key={i} style={{ color:'var(--text)', fontWeight:600 }}>{p.slice(2,-2)}</strong>
         : <span key={i}>{p}</span>
@@ -168,6 +168,11 @@ function Bubble({ msg, isNew }) {
 
 /* ── Main ChatBot ── */
 export default function ChatBot() {
+  const createInitialMessage = useCallback(() => ({
+    id:0, role:'assistant', type:'text',
+    content:"Hey! I'm **Manju Bot** - Manjunath's AI assistant. Ask me about his projects, skills, or how to get in touch. Try the quick buttons below!",
+    time: new Date(), isNew:true
+  }), []);
   const [messages, setMessages] = useState([{
     id:0, role:'assistant', type:'text',
     content:"Hey! 👋 I'm **Manju Bot** — Manjunath's AI assistant. Ask me about his projects, skills, or how to get in touch. Try the quick buttons below!",
@@ -184,6 +189,15 @@ export default function ChatBot() {
 
   const send = useCallback(async (text) => {
     if (!text.trim() || typing) return;
+    if (text.trim().toLowerCase() === 'clear') {
+      const initial = createInitialMessage();
+      setMessages([initial]);
+      setNewMsgIds(new Set([initial.id]));
+      setInput('');
+      setTyping(false);
+      return;
+    }
+
     const uid = Date.now();
     const userMsg = { id:uid, role:'user', type:'text', content:text.trim(), time:new Date() };
     setMessages(prev => [...prev, userMsg]);
@@ -204,7 +218,7 @@ export default function ChatBot() {
     setNewMsgIds(prev => new Set([...prev, botId]));
     setMessages(prev => [...prev, { id:botId, role:'assistant', ...reply, content: reply.content || '', time:new Date() }]);
     setTyping(false);
-  }, [messages, typing, aiMode]);
+  }, [messages, typing, aiMode, createInitialMessage]);
 
   const sendQuickAction = useCallback(async (id) => {
     if (typing) return;
