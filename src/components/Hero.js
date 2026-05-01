@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const TITLES = ['ML Engineer', 'Data Scientist', 'AI Builder', 'CS Student'];
 
@@ -28,68 +28,10 @@ function useTypewriter(words, speed = 80) {
 }
 
 export default function Hero() {
-  const canvasRef = useRef(null);
   const title = useTypewriter(TITLES);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let raf;
-    const pts = Array.from({ length: 60 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - .5) * .4,
-      vy: (Math.random() - .5) * .4,
-      r: Math.random() * 1.5 + .5,
-    }));
-
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(139,127,255,0.5)';
-        ctx.fill();
-      });
-      // Lines between close points
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(139,127,255,${.18 * (1 - d / 120)})`;
-            ctx.lineWidth = .5;
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      raf = requestAnimationFrame(draw);
-    }
-    draw();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
-  }, []);
 
   return (
     <section id="about" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
-
-      {/* Animated orbs */}
-      <div style={{ position:'absolute', top:'15%', left:'10%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(139,127,255,0.15) 0%, transparent 70%)', animation:'orb1 12s ease-in-out infinite', pointerEvents:'none' }} />
-      <div style={{ position:'absolute', bottom:'10%', right:'8%',  width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle, rgba(0,232,255,0.10) 0%, transparent 70%)',   animation:'orb2 15s ease-in-out infinite', pointerEvents:'none' }} />
-
-      {/* Grid */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'linear-gradient(rgba(139,127,255,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(139,127,255,0.04) 1px, transparent 1px)', backgroundSize:'60px 60px', animation:'gridFlow 8s linear infinite', pointerEvents:'none' }} />
-
       <div style={{ position:'relative', textAlign:'center', maxWidth:900, padding:'0 2rem', animation:'fadeUp .8s var(--ease) both' }}>
         {/* Badge */}
         <div style={{
@@ -153,11 +95,11 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div style={{ display:'flex', gap:'3rem', justifyContent:'center', marginTop:'5rem', flexWrap:'wrap', animation:'fadeUp .7s .6s var(--ease) both' }}>
-          {[['4+','ML Projects'],['95%','Peak Accuracy'],['3','Impact Domains'],['100K+','Users Served']].map(([n,l]) => (
+        <div style={{ display:'flex', gap:'3rem', justifyContent:'center', marginTop:'5rem', flexWrap:'nowrap', animation:'fadeUp .7s .6s var(--ease) both' }}>
+          {[['4+','ML Projects'],['95%','Peak Accuracy'],['4','Domains'],['End-to-End','ML Systems']].map(([n,l]) => (
             <div key={l} style={{ textAlign:'center' }}>
-              <div style={{ fontFamily:'var(--font-h)', fontSize:'2.2rem', fontWeight:800, background:'linear-gradient(135deg,var(--v),var(--c))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>{n}</div>
-              <div style={{ fontSize:'0.65rem', color:'var(--dim)', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:'0.2rem' }}>{l}</div>
+              <div style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.4rem, 4vw, 2.2rem)', fontWeight:800, background:'linear-gradient(135deg,var(--v),var(--c))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', whiteSpace:'nowrap' }}>{n}</div>
+              <div style={{ fontSize:'0.65rem', color:'#e9ecff', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:'0.2rem', textShadow:'0 0 12px rgba(0,232,255,0.35)' }}>{l}</div>
             </div>
           ))}
         </div>

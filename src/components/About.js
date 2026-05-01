@@ -24,13 +24,13 @@ export default function About() {
         {/* Left */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateX(-24px)', transition:'all .8s var(--ease)' }}>
           <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(2rem,4vw,3rem)', fontWeight:800, lineHeight:1.05, letterSpacing:'-0.04em', marginBottom:'1.5rem' }}>
-            Turning raw data<br /><span style={{ background:'linear-gradient(135deg,#8b7fff,#00e8ff)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>into real impact.</span>
+            Transforming data<br /><span style={{ background:'linear-gradient(135deg,#8b7fff,#00e8ff)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>into intelligent systems with real-world impact.</span>
           </h2>
           <p style={{ color:'var(--sub)', lineHeight:1.85, fontSize:'0.87rem', marginBottom:'1.5rem' }}>
-            I'm a Computer Science student with a deep focus on Machine Learning and Data Science. I build AI systems that solve tangible problems — from diagnosing lung disease in X-rays to predicting crop failure before it happens.
+            I'm a Computer Science student specializing in Machine Learning and AI Systems. I build intelligent, production-ready solutions - from multi-agent AI systems and phishing detection models to customer segmentation and blockchain-based applications.
           </p>
           <p style={{ color:'var(--sub)', lineHeight:1.85, fontSize:'0.87rem', marginBottom:'2rem' }}>
-            My approach is research-driven and product-minded: I care about accuracy metrics, but even more about whether the model actually works in the real world, at scale.
+            My work focuses on solving real-world problems across cybersecurity, data science, and decentralized systems - delivering solutions that are not just accurate, but practical, scalable, and impactful.
           </p>
           <div style={{ display:'flex', gap:'1rem', flexWrap:'wrap' }}>
             {['Research','Production ML','Real-World Impact'].map(tag => (

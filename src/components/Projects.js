@@ -39,10 +39,25 @@ const PROJECTS = [
 function PCard({ p, delay, inView }) {
   const [hov, setHov] = useState(false);
 
+  const activateNetwork = (event, active) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    window.dispatchEvent(new CustomEvent('project-card-activate', {
+      detail: {
+        active,
+        color: p.accent,
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+        radius: Math.max(rect.width, rect.height) * 0.85,
+      },
+    }));
+  };
+
   return (
     <div
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
+      onMouseEnter={(event) => { setHov(true); activateNetwork(event, true); }}
+      onMouseMove={(event) => activateNetwork(event, true)}
+      onMouseLeave={(event) => { setHov(false); activateNetwork(event, false); }}
       style={{
         position: 'relative', borderRadius: 18,
         padding: '2px',
