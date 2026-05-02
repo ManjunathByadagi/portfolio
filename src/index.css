@@ -28,14 +28,40 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-m); li
   --mag-x: 0px;
   --mag-y: 0px;
   --mag-scale: 1;
+  --liquid-filter: blur(0px);
+  position: relative;
   transform: translate3d(var(--mag-x), var(--mag-y), 0) scale(var(--mag-scale));
-  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease), color 260ms var(--ease);
-  will-change: transform;
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 320ms cubic-bezier(0.34, 1.56, 0.64, 1), 
+              border-color 320ms var(--ease), 
+              color 320ms var(--ease),
+              filter 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+  filter: drop-shadow(0 0 0px rgba(0,245,255,0)) var(--liquid-filter);
+}
+
+.liquid-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% 30%, rgba(0,245,255,0.2), transparent 50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .liquid-magnetic:hover {
-  --mag-scale: 1.035;
-  box-shadow: 0 0 36px rgba(0,245,255,0.22), 0 0 56px rgba(124,58,237,0.18) !important;
+  --mag-scale: 1.06;
+  --liquid-filter: blur(0.5px);
+  box-shadow: 
+    0 0 20px rgba(0,245,255,0.4),
+    0 0 40px rgba(124,58,237,0.25),
+    inset 0 0 20px rgba(0,245,255,0.1) !important;
+}
+
+.liquid-magnetic:hover::before {
+  opacity: 1;
 }
 
 ::-webkit-scrollbar { width: 3px; }

@@ -132,7 +132,7 @@ export default function NetworkBackground() {
         const dx = mouse.x - cx;
         const dy = mouse.y - cy;
         const dist = Math.hypot(dx, dy);
-        const radius = 150;
+        const radius = 180; // Increased pull radius for water drop effect
 
         if (dist > radius) {
           element.style.setProperty('--mag-x', '0px');
@@ -140,9 +140,11 @@ export default function NetworkBackground() {
           return;
         }
 
-        const pull = Math.pow(1 - dist / radius, 1.6);
-        element.style.setProperty('--mag-x', `${dx * 0.08 * pull}px`);
-        element.style.setProperty('--mag-y', `${dy * 0.08 * pull}px`);
+        // Smoother liquid curve for water drop morphing
+        const pull = Math.pow(1 - dist / radius, 2) * Math.cos((dist / radius) * Math.PI / 3);
+        const strength = 0.12; // Increased pull strength for more dramatic water effect
+        element.style.setProperty('--mag-x', `${dx * strength * Math.max(0, pull)}px`);
+        element.style.setProperty('--mag-y', `${dy * strength * Math.max(0, pull)}px`);
       });
     };
 
