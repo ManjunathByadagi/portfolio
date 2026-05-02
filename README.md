@@ -35,4 +35,5 @@ npm start
 # → http://localhost:3000
 
 ## 🔗 Live Demo
-https://portfolio-two-flax-48.vercel.app
+https://manjunath-portfolio-green.vercel.app/
+
