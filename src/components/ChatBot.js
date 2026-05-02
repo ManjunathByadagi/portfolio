@@ -182,10 +182,14 @@ export default function ChatBot() {
   const [typing, setTyping] = useState(false);
   const [aiMode, setAiMode] = useState(false);
   const [newMsgIds, setNewMsgIds] = useState(new Set([0]));
-  const bottomRef = useRef(null);
+  const messagesRef = useRef(null);
   const inputRef = useRef(null);
 
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:'smooth' }); }, [messages, typing]);
+  useEffect(() => {
+    const messagesEl = messagesRef.current;
+    if (!messagesEl) return;
+    messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior:'smooth' });
+  }, [messages, typing]);
 
   const send = useCallback(async (text) => {
     if (!text.trim() || typing) return;
@@ -306,7 +310,7 @@ export default function ChatBot() {
         </div>
 
         {/* Messages */}
-        <div style={{ height:440, overflowY:'auto', padding:'1.4rem', display:'flex', flexDirection:'column', gap:'1rem' }}>
+        <div ref={messagesRef} style={{ height:440, overflowY:'auto', padding:'1.4rem', display:'flex', flexDirection:'column', gap:'1rem', overscrollBehavior:'contain', scrollBehavior:'smooth' }}>
           {messages.map(msg => (
             <Bubble key={msg.id} msg={msg} isNew={newMsgIds.has(msg.id)} />
           ))}
@@ -318,7 +322,6 @@ export default function ChatBot() {
               </div>
             </div>
           )}
-          <div ref={bottomRef} />
         </div>
 
         {/* Quick action buttons */}
@@ -351,7 +354,8 @@ export default function ChatBot() {
               border:'1px solid rgba(255,255,255,0.09)',
               borderRadius:10, padding:'0.75rem 1rem',
               color:'var(--text)', fontFamily:'var(--font-m)',
-              fontSize:'0.84rem', outline:'none', transition:'border-color .2s',
+              fontSize:'16px', lineHeight:1.2, outline:'none', transition:'border-color .2s',
+              minHeight:46, boxSizing:'border-box',
             }}
             onFocus={e => e.target.style.borderColor='rgba(124,58,237,0.45)'}
             onBlur={e => e.target.style.borderColor='rgba(255,255,255,0.09)'}
@@ -363,6 +367,7 @@ export default function ChatBot() {
               border:'none', borderRadius:10, padding:'0.75rem 1.2rem',
               cursor: input.trim() && !typing ? 'pointer' : 'not-allowed',
               fontSize:'1.1rem', transition:'all .2s',
+              width:54, minHeight:46, flexShrink:0,
               boxShadow: input.trim() && !typing ? '0 0 20px rgba(124,58,237,0.4)' : 'none',
             }}>→</button>
         </div>

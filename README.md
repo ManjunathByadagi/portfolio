@@ -36,4 +36,4 @@ npm start
 
 
 ## 🔗 Live Demo
-https://portfolio-two-flax-48.vercel.app/
+https://portfolio-two-flax-48.vercel.app

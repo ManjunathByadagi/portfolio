@@ -56,7 +56,7 @@ export default function Hero() {
           animation:'fadeUp .7s .1s var(--ease) both',
           textShadow:'0 0 34px rgba(0,245,255,0.08)'
         }}>
-          manjunath<br />Byadagi
+          Manjunath<br />Byadagi
         </h1>
 
         <div style={{ fontSize:'clamp(1rem, 2.5vw, 1.3rem)', fontFamily:'var(--font-m)', marginBottom:'1.2rem', height:'2rem', animation:'fadeUp .7s .3s var(--ease) both' }}>
@@ -73,7 +73,7 @@ export default function Hero() {
           {[
             { label:'Chat with AI Me', href:'#chat', grad:'linear-gradient(135deg,#7C3AED,#00F5FF)', shadow:'rgba(124,58,237,0.45)' },
             { label:'View Projects', href:'#projects', grad:null, border:'rgba(255,255,255,0.12)' },
-            { label:'Resume', href:'/resume.pdf', download:true, grad:null, border:'rgba(0,245,255,0.2)', color:'var(--c)' },
+            { label:'Resume', href:'/manjunath_Byadagi.pdf', download:true, grad:null, border:'rgba(0,245,255,0.2)', color:'var(--c)' },
           ].map(btn => (
             <a key={btn.label} className="liquid-magnetic" data-liquid-magnetic href={btn.href} download={btn.download || undefined} style={{
               padding:'0.9rem 2rem', borderRadius:10,

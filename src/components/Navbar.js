@@ -33,8 +33,7 @@ export default function Navbar() {
         style={{ fontFamily: 'var(--font-h)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.04em', cursor: 'pointer' }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <span style={{ background: 'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MB</span>
-        <span style={{ color: 'var(--v)', animation: 'blink 2s infinite' }}>_</span>
+        <span style={{ background: 'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>.Manjunath</span>
       </div>
 
       <div style={{ display: 'flex', gap: '0.25rem' }}>
