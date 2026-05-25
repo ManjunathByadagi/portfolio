@@ -98,7 +98,7 @@ function PCard({ p, delay, inView }) {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.3rem' }}>
           <div>
-            <span style={{ fontSize: '0.65rem', color: p.accent, letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--font-m)' }}>◉ {p.tag}</span>
+            <span style={{ fontSize: '0.65rem', color: '#fff', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--font-m)' }}>◉ {p.tag}</span>
             <h3 style={{ fontFamily: 'var(--font-h)', fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.02em', marginTop: '0.3rem' }}>{p.emoji} {p.title}</h3>
           </div>
           <a
@@ -117,7 +117,7 @@ function PCard({ p, delay, inView }) {
 
         {[['⚠ Problem', p.problem], ['◈ Solution', p.solution], ['✓ Result', p.result]].map(([lbl, txt]) => (
           <div key={lbl} style={{ marginBottom: '0.9rem' }}>
-            <div style={{ fontSize: '0.62rem', color: p.accent, letterSpacing: '0.1em', fontFamily: 'var(--font-m)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>{lbl}</div>
+            <div style={{ fontSize: '0.62rem', color: '#fff', letterSpacing: '0.1em', fontFamily: 'var(--font-m)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>{lbl}</div>
             <p style={{ fontSize: '0.82rem', color: 'var(--sub)', lineHeight: 1.65 }}>{txt}</p>
           </div>
         ))}
@@ -128,7 +128,7 @@ function PCard({ p, delay, inView }) {
               key={t}
               style={{
                 fontSize: '0.68rem', fontFamily: 'var(--font-m)',
-                color: p.accent, border: `1px solid ${p.accent}30`,
+                color: '#fff', border: `1px solid ${p.accent}30`,
                 background: `${p.accent}0d`, padding: '0.22rem 0.55rem', borderRadius: 5,
                 transition: 'all .2s', cursor: 'default'
               }}
@@ -150,10 +150,10 @@ export default function Projects() {
   return (
     <section id="projects" style={{ padding: '7rem 2rem', maxWidth: 1120, margin: '0 auto' }} ref={ref}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
-        <div style={{ fontSize: '0.68rem', color: 'var(--v)', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'var(--font-m)', whiteSpace: 'nowrap' }}>◉ Featured Work</div>
+        <div style={{ fontSize: '0.68rem', color: '#fff', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'var(--font-m)', whiteSpace: 'nowrap' }}>◉ Featured Work</div>
         <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)', transformOrigin: 'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 1s var(--ease)' }} />
         <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800, letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>
-          Projects that <span style={{ color: 'var(--v)' }}>matter</span>
+          Projects that <span style={{ color: '#fff' }}>matter</span>
         </h2>
       </div>
 

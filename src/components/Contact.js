@@ -22,12 +22,12 @@ export default function Contact() {
       <div style={{ height: 1, background: 'linear-gradient(90deg,transparent,rgba(124,58,237,0.4),transparent)', marginBottom: '6rem' }} />
 
       <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateY(24px)', transition: 'all .8s var(--ease)' }}>
-        <div style={{ fontSize: '0.68rem', color: 'var(--v)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'var(--font-m)' }}>◉ Get In Touch</div>
+        <div style={{ fontSize: '0.68rem', color: '#fff', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '0.75rem', fontFamily: 'var(--font-m)' }}>◉ Get In Touch</div>
 
         <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 'clamp(2.2rem,6vw,4rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '1.2rem' }}>
           Let's build something
           <br />
-          <span style={{ background: 'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>remarkable.</span>
+          <span style={{ color: '#fff' }}>remarkable.</span>
         </h2>
 
         <p style={{ color: 'var(--sub)', fontSize: '0.87rem', fontFamily: 'var(--font-m)', maxWidth: 460, margin: '0 auto 3rem', lineHeight: 1.75 }}>

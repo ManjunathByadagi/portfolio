@@ -39,7 +39,7 @@ export default function Hero() {
           border:'1px solid rgba(124,58,237,0.3)',
           background:'rgba(124,58,237,0.08)',
           backdropFilter:'blur(10px)',
-          fontSize:'0.7rem', fontFamily:'var(--font-m)', color:'var(--v)',
+          fontSize:'0.7rem', fontFamily:'var(--font-m)', color:'#fff',
           letterSpacing:'0.1em', textTransform:'uppercase',
           animation:'fadeIn .6s .2s both'
         }}>
@@ -51,8 +51,7 @@ export default function Hero() {
           fontFamily:'var(--font-h)', fontWeight:800,
           fontSize:'clamp(3rem, 8vw, 6.5rem)', lineHeight:.95,
           letterSpacing:'-0.05em', marginBottom:'1.5rem',
-          background:'linear-gradient(135deg, #E6F1FF 0%, #7C3AED 45%, #00F5FF 100%)',
-          WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent',
+          color:'#fff',
           animation:'fadeUp .7s .1s var(--ease) both',
           textShadow:'0 0 34px rgba(0,245,255,0.08)'
         }}>
@@ -61,7 +60,7 @@ export default function Hero() {
 
         <div style={{ fontSize:'clamp(1rem, 2.5vw, 1.3rem)', fontFamily:'var(--font-m)', marginBottom:'1.2rem', height:'2rem', animation:'fadeUp .7s .3s var(--ease) both' }}>
           <span style={{ color:'var(--sub)' }}>$ whoami - </span>
-          <span style={{ color:'var(--c)', borderRight:'2px solid var(--v)', paddingRight:'2px', animation:'typeCursor .8s infinite' }}>{title}</span>
+          <span style={{ color:'#fff', borderRight:'2px solid var(--v)', paddingRight:'2px', animation:'typeCursor .8s infinite' }}>{title}</span>
         </div>
 
         <p style={{ color:'var(--sub)', fontSize:'0.9rem', maxWidth:560, margin:'0 auto 3rem', lineHeight:1.7, animation:'fadeUp .7s .4s var(--ease) both', textShadow:'0 0 20px rgba(230,241,255,0.035)' }}>
@@ -91,8 +90,8 @@ export default function Hero() {
         <div style={{ display:'flex', gap:'3rem', justifyContent:'center', marginTop:'5rem', flexWrap:'nowrap', animation:'fadeUp .7s .6s var(--ease) both' }}>
           {[['4+','ML Projects'],['95%','Peak Accuracy'],['4','Domains'],['End-to-End','ML Systems']].map(([n,l]) => (
             <div key={l} style={{ textAlign:'center' }}>
-              <div style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.4rem, 4vw, 2.2rem)', fontWeight:800, background:'linear-gradient(135deg,var(--v),var(--c))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', whiteSpace:'nowrap' }}>{n}</div>
-              <div style={{ fontSize:'0.65rem', color:'#E6F1FF', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:'0.2rem', textShadow:'0 0 12px rgba(0,245,255,0.35)' }}>{l}</div>
+              <div style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.4rem, 4vw, 2.2rem)', fontWeight:800, color:'#fff', whiteSpace:'nowrap' }}>{n}</div>
+              <div style={{ fontSize:'0.65rem', color:'#fff', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:'0.2rem', textShadow:'0 0 12px rgba(255,255,255,0.15)' }}>{l}</div>
             </div>
           ))}
         </div>

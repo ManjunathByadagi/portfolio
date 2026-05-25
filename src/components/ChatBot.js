@@ -30,7 +30,7 @@ function ProjectCards() {
           <span style={{ fontSize:'1.3rem' }}>{p.emoji}</span>
           <div style={{ flex:1, minWidth:0 }}>
             <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.85rem', color:'#fff' }}>{p.name}</div>
-            <div style={{ fontSize:'0.68rem', color:p.color, fontFamily:'var(--font-m)', marginTop:'0.1rem' }}>{p.tag}</div>
+            <div style={{ fontSize:'0.68rem', color:'#fff', fontFamily:'var(--font-m)', marginTop:'0.1rem' }}>{p.tag}</div>
           </div>
           <div style={{ fontSize:'0.68rem', color:'var(--sub)', fontFamily:'var(--font-m)', textAlign:'right', minWidth:0, flexShrink:0, maxWidth:160 }}>{p.result}</div>
         </div>
@@ -44,10 +44,10 @@ function SkillCards() {
     <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginTop:'0.3rem' }}>
       {Object.entries(SKILLS_DATA).map(([cat, { color, items }]) => (
         <div key={cat} style={{ padding:'0.65rem 0.85rem', borderRadius:10, background:'rgba(255,255,255,0.04)', border:`1px solid ${color}20` }}>
-          <div style={{ fontSize:'0.65rem', color, fontFamily:'var(--font-m)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'0.5rem' }}>◉ {cat}</div>
+          <div style={{ fontSize:'0.65rem', color:'#fff', fontFamily:'var(--font-m)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'0.5rem' }}>◉ {cat}</div>
           <div style={{ display:'flex', flexWrap:'wrap', gap:'0.35rem' }}>
             {items.map(s => (
-              <span key={s} style={{ fontSize:'0.68rem', fontFamily:'var(--font-m)', color:'var(--sub)', background:`${color}0d`, border:`1px solid ${color}20`, padding:'0.2rem 0.5rem', borderRadius:5 }}>{s}</span>
+              <span key={s} style={{ fontSize:'0.68rem', fontFamily:'var(--font-m)', color:'#fff', background:`${color}0d`, border:`1px solid ${color}20`, padding:'0.2rem 0.5rem', borderRadius:5 }}>{s}</span>
             ))}
           </div>
         </div>
@@ -69,8 +69,8 @@ function ContactCard() {
         <div key={l.label} style={{ display:'flex', alignItems:'center', gap:'0.75rem', padding:'0.6rem 0.85rem', borderRadius:10, background:'rgba(255,255,255,0.04)', border:`1px solid ${l.color}25` }}>
           <span style={{ fontSize:'1rem' }}>{l.icon}</span>
           <div style={{ flex:1, minWidth:0 }}>
-            <div style={{ fontSize:'0.7rem', color:l.color, fontFamily:'var(--font-m)', letterSpacing:'0.06em' }}>{l.label}</div>
-            <a href={l.href} target="_blank" rel="noreferrer" style={{ fontSize:'0.75rem', color:'var(--sub)', fontFamily:'var(--font-m)', textDecoration:'none' }}>{l.value}</a>
+            <div style={{ fontSize:'0.7rem', color:'#fff', fontFamily:'var(--font-m)', letterSpacing:'0.06em' }}>{l.label}</div>
+            <a href={l.href} target="_blank" rel="noreferrer" style={{ fontSize:'0.75rem', color:'#fff', fontFamily:'var(--font-m)', textDecoration:'none' }}>{l.value}</a>
           </div>
           {l.copy && (
             <button onClick={() => { navigator.clipboard.writeText(l.value); setCopied(true); setTimeout(()=>setCopied(false),2000); }}
@@ -262,10 +262,10 @@ export default function ChatBot() {
     <section id="chat" style={{ padding:'7rem 2rem', maxWidth:820, margin:'0 auto' }}>
       {/* Header */}
       <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3rem' }}>
-        <div style={{ fontSize:'0.68rem', color:'var(--v)', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Interactive</div>
+        <div style={{ fontSize:'0.68rem', color:'#fff', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Interactive</div>
         <div style={{ flex:1, height:1, background:'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)' }} />
         <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.6rem,3vw,2.2rem)', fontWeight:800, letterSpacing:'-0.03em', whiteSpace:'nowrap' }}>
-          Chat with <span style={{ color:'var(--v)' }}>Manju Bot</span>
+          Chat with <span style={{ color:'#fff' }}>Manju Bot</span>
         </h2>
       </div>
 
@@ -291,7 +291,7 @@ export default function ChatBot() {
             </div>
             <div>
               <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.9rem' }}>Manju Bot</div>
-              <div style={{ fontSize:'0.62rem', color:'var(--g)', fontFamily:'var(--font-m)' }}>◉ online · {aiMode ? 'AI Mode' : 'Smart Mode'}</div>
+              <div style={{ fontSize:'0.62rem', color:'#fff', fontFamily:'var(--font-m)' }}>◉ online · {aiMode ? 'AI Mode' : 'Smart Mode'}</div>
             </div>
           </div>
           {/* AI toggle */}
@@ -300,11 +300,11 @@ export default function ChatBot() {
             padding:'0.35rem 0.9rem', borderRadius:20, cursor:'pointer',
             background: aiMode ? 'rgba(124,58,237,0.2)' : 'rgba(255,255,255,0.04)',
             border: `1px solid ${aiMode ? 'rgba(124,58,237,0.5)' : 'rgba(255,255,255,0.1)'}`,
-            color: aiMode ? 'var(--v)' : 'var(--dim)',
+            color: '#fff',
             fontSize:'0.68rem', fontFamily:'var(--font-m)', letterSpacing:'0.06em',
             transition:'all .25s', boxShadow: aiMode ? '0 0 16px rgba(124,58,237,0.25)' : 'none'
           }}>
-            <div style={{ width:6, height:6, borderRadius:'50%', background: aiMode ? 'var(--v)' : 'var(--dim)', boxShadow: aiMode ? '0 0 8px var(--v)' : 'none', transition:'all .25s' }} />
+            <div style={{ width:6, height:6, borderRadius:'50%', background: '#fff', boxShadow: '0 0 8px rgba(255,255,255,0.35)', transition:'all .25s' }} />
             AI Mode {aiMode ? 'ON' : 'OFF'}
           </button>
         </div>
@@ -331,7 +331,7 @@ export default function ChatBot() {
               style={{
                 fontSize:'0.7rem', fontFamily:'var(--font-m)', cursor:'pointer',
                 padding:'0.35rem 0.8rem', borderRadius:20,
-                background:`${qa.color}0d`, color: qa.color,
+                background:`${qa.color}0d`, color: '#fff',
                 border:`1px solid ${qa.color}30`,
                 transition:'all .2s',
               }}

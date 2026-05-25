@@ -16,7 +16,7 @@ export default function About() {
     <section style={{ padding:'7rem 2rem', maxWidth:980, margin:'0 auto' }} ref={ref}>
       {/* Section label */}
       <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3.5rem' }}>
-        <div style={{ fontSize:'0.68rem', color:'var(--v)', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ About Me</div>
+        <div style={{ fontSize:'0.68rem', color:'#fff', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ About Me</div>
         <div style={{ flex:1, height:1, background:'linear-gradient(90deg, rgba(124,58,237,0.4), transparent)', transformOrigin:'left', transform: inView ? 'scaleX(1)' : 'scaleX(0)', transition:'transform 1s var(--ease)' }} />
       </div>
 
@@ -24,7 +24,7 @@ export default function About() {
         {/* Left */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateX(-24px)', transition:'all .8s var(--ease)' }}>
           <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(2rem,4vw,3rem)', fontWeight:800, lineHeight:1.05, letterSpacing:'-0.04em', marginBottom:'1.5rem' }}>
-            Transforming data<br /><span style={{ background:'linear-gradient(135deg,#7C3AED,#00F5FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>into intelligent systems with real-world impact.</span>
+            Transforming data<br /><span style={{ color:'#fff' }}>into intelligent systems with real-world impact.</span>
           </h2>
           <p style={{ color:'var(--sub)', lineHeight:1.85, fontSize:'0.87rem', marginBottom:'1.5rem' }}>
             I'm a Computer Science student specializing in Machine Learning and AI Systems. I build intelligent, production-ready solutions - from multi-agent AI systems and phishing detection models to customer segmentation and blockchain-based applications.
@@ -35,7 +35,7 @@ export default function About() {
           <div style={{ display:'flex', gap:'1rem', flexWrap:'wrap' }}>
             {['Research','Production ML','Real-World Impact'].map(tag => (
               <span key={tag} style={{
-                fontSize:'0.7rem', fontFamily:'var(--font-m)', color:'var(--v)',
+                fontSize:'0.7rem', fontFamily:'var(--font-m)', color:'#fff',
                 border:'1px solid rgba(124,58,237,0.25)', background:'rgba(124,58,237,0.08)',
                 padding:'0.35rem 0.75rem', borderRadius:6
               }}>{tag}</span>

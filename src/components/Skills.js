@@ -9,10 +9,10 @@ export default function Skills() {
   return (
     <section id="skills" style={{ padding:'7rem 2rem', maxWidth:980, margin:'0 auto' }} ref={ref}>
       <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3.5rem' }}>
-        <div style={{ fontSize:'0.68rem', color:'var(--v)', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Toolkit</div>
+        <div style={{ fontSize:'0.68rem', color:'#fff', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Toolkit</div>
         <div style={{ flex:1, height:1, background:'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)', transformOrigin:'left', transform:inView?'scaleX(1)':'scaleX(0)', transition:'transform 1s var(--ease)' }} />
         <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.6rem,3vw,2.2rem)', fontWeight:800, letterSpacing:'-0.03em', whiteSpace:'nowrap' }}>
-          Skills & <span style={{ color:'var(--v)' }}>Technologies</span>
+          Skills & <span style={{ color:'#fff' }}>Technologies</span>
         </h2>
       </div>
 
@@ -22,7 +22,7 @@ export default function Skills() {
             {/* Category header */}
             <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'0.9rem' }}>
               <div style={{ width:8, height:8, borderRadius:'50%', background:color, boxShadow:`0 0 12px ${color}` }} />
-              <span style={{ fontSize:'0.68rem', color, letterSpacing:'0.12em', textTransform:'uppercase', fontFamily:'var(--font-m)' }}>{cat}</span>
+              <span style={{ fontSize:'0.68rem', color:'#fff', letterSpacing:'0.12em', textTransform:'uppercase', fontFamily:'var(--font-m)' }}>{cat}</span>
               <div style={{ flex:1, height:'1px', background:`linear-gradient(90deg,${color}30,transparent)` }} />
             </div>
             {/* Tags */}
