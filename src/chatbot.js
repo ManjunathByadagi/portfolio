@@ -65,11 +65,11 @@ export const PROJECTS_DATA = [
 ];
 
 export const SKILLS_DATA = {
-  'ML / AI': { color: '#7C3AED', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'HuggingFace', 'OpenCV', 'XGBoost', 'Keras'] },
+  'AI/ML': { color: '#7C3AED', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'HuggingFace', 'OpenCV', 'XGBoost', 'Keras'] },
   'Languages': { color: '#00F5FF', items: ['Python', 'SQL', 'JavaScript', 'C++', 'R'] },
   'Data Science': { color: '#22FF88', items: ['Pandas', 'NumPy', 'Matplotlib', 'Plotly', 'Spark', 'Jupyter'] },
   'MLOps & Cloud': { color: '#ff6b82', items: ['AWS', 'Docker', 'MLflow', 'GCP', 'Airflow', 'CI/CD'] },
-  'Web & APIs': { color: '#ffd166', items: ['React', 'FastAPI', 'Flask', 'Streamlit', 'PostgreSQL', 'Redis'] },
+  'Web/API': { color: '#ffd166', items: ['React', 'FastAPI', 'Flask', 'Streamlit', 'PostgreSQL', 'Redis'] },
 };
 
 function projectReply(project) {

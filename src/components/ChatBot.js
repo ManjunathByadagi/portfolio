@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { getBotReply, getAIReply, QUICK_ACTIONS, PROJECTS_DATA, SKILLS_DATA } from '../chatbot';
 
+const PROMPTS = [
+  'Tell me about your best project',
+  'What ML tools do you use?',
+  'Show cybersecurity work',
+];
+
 /* ── Sub-components for rich message types ── */
 
 function TypingDots() {
@@ -15,11 +21,11 @@ function TypingDots() {
 
 function ProjectCards() {
   return (
-    <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginTop:'0.3rem' }}>
+    <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginTop:'0.45rem' }}>
       {PROJECTS_DATA.map(p => (
         <div key={p.name} style={{
           display:'flex', alignItems:'center', gap:'0.75rem',
-          padding:'0.65rem 0.85rem', borderRadius:10,
+          padding:'0.7rem 0.85rem', borderRadius:12,
           background:'rgba(255,255,255,0.04)',
           border:`1px solid ${p.color}25`,
           transition:'all .2s', cursor:'default'
@@ -29,8 +35,8 @@ function ProjectCards() {
         >
           <span style={{ fontSize:'1.3rem' }}>{p.emoji}</span>
           <div style={{ flex:1, minWidth:0 }}>
-            <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.85rem', color:'#fff' }}>{p.name}</div>
-            <div style={{ fontSize:'0.68rem', color:'#fff', fontFamily:'var(--font-m)', marginTop:'0.1rem' }}>{p.tag}</div>
+            <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.83rem', color:'#fff' }}>{p.name}</div>
+            <div style={{ fontSize:'0.66rem', color:'var(--sub)', fontFamily:'var(--font-m)', marginTop:'0.12rem' }}>{p.tag}</div>
           </div>
           <div style={{ fontSize:'0.68rem', color:'var(--sub)', fontFamily:'var(--font-m)', textAlign:'right', minWidth:0, flexShrink:0, maxWidth:160 }}>{p.result}</div>
         </div>
@@ -41,9 +47,9 @@ function ProjectCards() {
 
 function SkillCards() {
   return (
-    <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginTop:'0.3rem' }}>
+    <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginTop:'0.45rem' }}>
       {Object.entries(SKILLS_DATA).map(([cat, { color, items }]) => (
-        <div key={cat} style={{ padding:'0.65rem 0.85rem', borderRadius:10, background:'rgba(255,255,255,0.04)', border:`1px solid ${color}20` }}>
+        <div key={cat} style={{ padding:'0.7rem 0.85rem', borderRadius:12, background:'rgba(255,255,255,0.04)', border:`1px solid ${color}20` }}>
           <div style={{ fontSize:'0.65rem', color:'#fff', fontFamily:'var(--font-m)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'0.5rem' }}>◉ {cat}</div>
           <div style={{ display:'flex', flexWrap:'wrap', gap:'0.35rem' }}>
             {items.map(s => (
@@ -64,9 +70,9 @@ function ContactCard() {
     { icon:'🐙', label:'GitHub', value:'github.com/ManjunathByadagi', href:'https://github.com/ManjunathByadagi', color:'#7C3AED' },
   ];
   return (
-    <div style={{ display:'flex', flexDirection:'column', gap:'0.55rem', marginTop:'0.3rem' }}>
+    <div style={{ display:'flex', flexDirection:'column', gap:'0.55rem', marginTop:'0.45rem' }}>
       {links.map(l => (
-        <div key={l.label} style={{ display:'flex', alignItems:'center', gap:'0.75rem', padding:'0.6rem 0.85rem', borderRadius:10, background:'rgba(255,255,255,0.04)', border:`1px solid ${l.color}25` }}>
+        <div key={l.label} style={{ display:'flex', alignItems:'center', gap:'0.75rem', padding:'0.7rem 0.85rem', borderRadius:12, background:'rgba(255,255,255,0.04)', border:`1px solid ${l.color}25` }}>
           <span style={{ fontSize:'1rem' }}>{l.icon}</span>
           <div style={{ flex:1, minWidth:0 }}>
             <div style={{ fontSize:'0.7rem', color:'#fff', fontFamily:'var(--font-m)', letterSpacing:'0.06em' }}>{l.label}</div>
@@ -86,7 +92,7 @@ function ContactCard() {
 
 function ResumeCard() {
   return (
-    <div style={{ padding:'1rem', borderRadius:10, background:'rgba(255,213,102,0.06)', border:'1px solid rgba(255,213,102,0.2)', marginTop:'0.3rem', textAlign:'center' }}>
+    <div style={{ padding:'1rem', borderRadius:12, background:'rgba(255,213,102,0.06)', border:'1px solid rgba(255,213,102,0.2)', marginTop:'0.45rem', textAlign:'center' }}>
       <div style={{ fontSize:'1.5rem', marginBottom:'0.5rem' }}>📄</div>
       <div style={{ fontSize:'0.82rem', fontFamily:'var(--font-h)', fontWeight:700, marginBottom:'0.4rem' }}>Manjunath's Resume</div>
       <div style={{ fontSize:'0.72rem', color:'var(--sub)', fontFamily:'var(--font-m)', marginBottom:'0.8rem' }}>ML projects · Skills · Academic background</div>
@@ -126,7 +132,7 @@ function FormattedText({ text, showCursor }) {
         ? <strong key={i} style={{ color:'var(--text)', fontWeight:600 }}>{p.slice(2,-2)}</strong>
         : <span key={i}>{p}</span>
       )}
-      {showCursor && <span style={{ borderRight:'2px solid var(--v)', marginLeft:1, animation:'typeCursor .8s infinite' }}>&nbsp;</span>}
+      {showCursor && <span style={{ borderRight:'2px solid var(--v)', marginLeft:1, animation:'typeCursor 1.2s infinite' }}>&nbsp;</span>}
     </p>
   );
 }
@@ -147,10 +153,10 @@ function Bubble({ msg, isNew }) {
   return (
     <div style={{ display:'flex', justifyContent:isUser?'flex-end':'flex-start', gap:'0.6rem', alignItems:'flex-end', animation:'fadeUp .3s var(--ease) both' }}>
       {!isUser && (
-        <div style={{ width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem', flexShrink:0, boxShadow:'0 0 12px rgba(124,58,237,0.4)' }}>🤖</div>
+        <div style={{ width:28, height:28, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem', flexShrink:0, boxShadow:'0 0 10px rgba(124,58,237,0.25)' }}>🤖</div>
       )}
       <div style={{
-        maxWidth:'76%', padding:'0.75rem 1rem',
+        maxWidth:'72%', padding:'0.7rem 0.95rem',
         borderRadius: isUser ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
         background: isUser ? 'linear-gradient(135deg,#7a6fff,#5a4fdf)' : 'rgba(255,255,255,0.045)',
         border: isUser ? 'none' : '1px solid rgba(255,255,255,0.07)',
@@ -259,12 +265,12 @@ export default function ChatBot() {
   function onKey(e) { if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); send(input); } }
 
   return (
-    <section id="chat" style={{ padding:'7rem 2rem', maxWidth:820, margin:'0 auto' }}>
+    <section id="chat" style={{ padding:'5.8rem 2rem', maxWidth:780, margin:'0 auto' }}>
       {/* Header */}
-      <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'3rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'2rem' }}>
         <div style={{ fontSize:'0.68rem', color:'#fff', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'var(--font-m)', whiteSpace:'nowrap' }}>◉ Interactive</div>
         <div style={{ flex:1, height:1, background:'linear-gradient(90deg,rgba(124,58,237,0.4),transparent)' }} />
-        <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.6rem,3vw,2.2rem)', fontWeight:800, letterSpacing:'-0.03em', whiteSpace:'nowrap' }}>
+        <h2 style={{ fontFamily:'var(--font-h)', fontSize:'clamp(1.45rem,2.6vw,2rem)', fontWeight:800, letterSpacing:'-0.03em', whiteSpace:'nowrap' }}>
           Chat with <span style={{ color:'#fff' }}>Manju Bot</span>
         </h2>
       </div>
@@ -275,11 +281,11 @@ export default function ChatBot() {
         border:'1px solid rgba(255,255,255,0.07)',
         background:'rgba(7,16,26,0.8)',
         backdropFilter:'blur(20px)',
-        boxShadow:'0 0 80px rgba(124,58,237,0.1), 0 40px 80px rgba(0,0,0,0.5)'
+        boxShadow:'0 0 50px rgba(124,58,237,0.08), 0 34px 70px rgba(0,0,0,0.45)'
       }}>
         {/* Chat header bar */}
         <div style={{
-          padding:'0.9rem 1.4rem',
+          padding:'0.8rem 1.2rem',
           background:'rgba(124,58,237,0.06)',
           borderBottom:'1px solid rgba(255,255,255,0.06)',
           display:'flex', alignItems:'center', justifyContent:'space-between'
@@ -290,8 +296,8 @@ export default function ChatBot() {
               <div style={{ position:'absolute', bottom:1, right:1, width:8, height:8, borderRadius:'50%', background:'var(--g)', border:'2px solid #07101a', boxShadow:'0 0 6px var(--g)' }} />
             </div>
             <div>
-              <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.9rem' }}>Manju Bot</div>
-              <div style={{ fontSize:'0.62rem', color:'#fff', fontFamily:'var(--font-m)' }}>◉ online · {aiMode ? 'AI Mode' : 'Smart Mode'}</div>
+              <div style={{ fontFamily:'var(--font-h)', fontWeight:700, fontSize:'0.9rem' }}>Portfolio Assistant</div>
+              <div style={{ fontSize:'0.62rem', color:'var(--sub)', fontFamily:'var(--font-m)' }}>◉ online · {aiMode ? 'Detailed replies' : 'Smart replies'}</div>
             </div>
           </div>
           {/* AI toggle */}
@@ -304,19 +310,46 @@ export default function ChatBot() {
             fontSize:'0.68rem', fontFamily:'var(--font-m)', letterSpacing:'0.06em',
             transition:'all .25s', boxShadow: aiMode ? '0 0 16px rgba(124,58,237,0.25)' : 'none'
           }}>
-            <div style={{ width:6, height:6, borderRadius:'50%', background: '#fff', boxShadow: '0 0 8px rgba(255,255,255,0.35)', transition:'all .25s' }} />
-            AI Mode {aiMode ? 'ON' : 'OFF'}
+            <div style={{ width:6, height:6, borderRadius:'50%', background: aiMode ? 'var(--v)' : 'var(--g)', boxShadow: aiMode ? '0 0 8px rgba(124,58,237,0.35)' : '0 0 8px rgba(34,255,136,0.28)', transition:'all .25s' }} />
+            {aiMode ? 'Detailed replies' : 'Smart replies'}
           </button>
         </div>
 
+        <div style={{ padding:'1rem 1.2rem 0', display:'flex', flexWrap:'wrap', gap:'0.45rem' }}>
+          {PROMPTS.map(prompt => (
+            <button
+              key={prompt}
+              type="button"
+              onClick={() => setInput(prompt)}
+              style={{
+                fontSize:'0.66rem',
+                fontFamily:'var(--font-m)',
+                color:'#fff',
+                background:'rgba(255,255,255,0.04)',
+                border:'1px solid rgba(255,255,255,0.08)',
+                padding:'0.4rem 0.7rem',
+                borderRadius:999,
+                cursor:'pointer'
+              }}
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
+
         {/* Messages */}
-        <div ref={messagesRef} style={{ height:440, overflowY:'auto', padding:'1.4rem', display:'flex', flexDirection:'column', gap:'1rem', overscrollBehavior:'contain', scrollBehavior:'smooth' }}>
+        <div ref={messagesRef} style={{ height:400, overflowY:'auto', padding:'1.1rem 1.2rem 1.2rem', display:'flex', flexDirection:'column', gap:'0.9rem', overscrollBehavior:'contain', scrollBehavior:'smooth' }}>
+          {messages.length === 1 && (
+            <div style={{ padding:'0.8rem 0.95rem', borderRadius:14, border:'1px solid rgba(255,255,255,0.08)', background:'rgba(255,255,255,0.03)', color:'var(--sub)', fontSize:'0.8rem', lineHeight:1.6, marginBottom:'0.1rem' }}>
+              Ask me about projects, skills, cybersecurity work, or how to contact Manjunath. Quick prompts are above.
+            </div>
+          )}
           {messages.map(msg => (
             <Bubble key={msg.id} msg={msg} isNew={newMsgIds.has(msg.id)} />
           ))}
           {typing && (
             <div style={{ display:'flex', gap:'0.6rem', alignItems:'flex-end', animation:'fadeUp .3s var(--ease) both' }}>
-              <div style={{ width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem' }}>🤖</div>
+              <div style={{ width:28, height:28, borderRadius:'50%', background:'linear-gradient(135deg,var(--v),var(--c))', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'0.8rem' }}>🤖</div>
               <div style={{ padding:'0.75rem 1rem', borderRadius:'16px 16px 16px 4px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.07)' }}>
                 <TypingDots />
               </div>
@@ -325,7 +358,7 @@ export default function ChatBot() {
         </div>
 
         {/* Quick action buttons */}
-        <div style={{ padding:'0.75rem 1.4rem', borderTop:'1px solid rgba(255,255,255,0.05)', display:'flex', gap:'0.5rem', flexWrap:'wrap', background:'rgba(0,0,0,0.2)' }}>
+        <div style={{ padding:'0.75rem 1.2rem', borderTop:'1px solid rgba(255,255,255,0.05)', display:'flex', gap:'0.5rem', flexWrap:'wrap', background:'rgba(0,0,0,0.2)' }}>
           {QUICK_ACTIONS.map(qa => (
             <button key={qa.id} onClick={() => sendQuickAction(qa.id)}
               style={{
@@ -342,7 +375,7 @@ export default function ChatBot() {
         </div>
 
         {/* Input area */}
-        <div style={{ padding:'1rem 1.4rem', borderTop:'1px solid rgba(255,255,255,0.06)', display:'flex', gap:'0.75rem', alignItems:'center' }}>
+        <div style={{ padding:'1rem 1.2rem', borderTop:'1px solid rgba(255,255,255,0.06)', display:'flex', gap:'0.65rem', alignItems:'center' }}>
           <input
             ref={inputRef}
             value={input}
